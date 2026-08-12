@@ -1,7 +1,7 @@
 #===================================================================================================
 #
 #   Target Code : Verilog
-#   Version     : 1.0.4
+#   Version     : 1.0.5
 #
 #   Description
 #		module skeleton
@@ -26,8 +26,7 @@ module ${1:`!p import os; name, ext = os.path.splitext(fn); snip.rv = name`} #(
 
 	//  Variable Bit Width
 	${3:/*  use "local(param)?\?" or "param(eter)?\?" snippets  */}
-)
-(
+) (
 	//=================
 	//  PORT DEFINITION
 	//=================
@@ -37,36 +36,36 @@ module ${1:`!p import os; name, ext = os.path.splitext(fn); snip.rv = name`} #(
 );$0
 
 
-//=====================
-//  LATENCY DESCRIPTION
-//=====================
+	//=====================
+	//  LATENCY DESCRIPTION
+	//=====================
 
-${4:localparam  LATENCY = 2;}
-
-
-//=====================
-//  VARIABLE DEFINITION
-//=====================
+	${4:localparam  LATENCY = 2;}
 
 
-
-//===============
-//  DESIGN CODING
-//===============
+	//=====================
+	//  VARIABLE DEFINITION
+	//=====================
 
 
 
-//=====================
-//  FUNCTION DEFINITION
-//=====================
+	//===============
+	//  DESIGN CODING
+	//===============
 
 
 
-//=================
-//  PARAMETER CHECK
-//=================
+	//=====================
+	//  FUNCTION DEFINITION
+	//=====================
 
-localparam  CHK_DATA_WIDTH  = 1 / (DATA_WIDTH == 0);
+
+
+	//=================
+	//  PARAMETER CHECK
+	//=================
+
+	localparam  CHK_DATA_WIDTH  = 1 / (DATA_WIDTH == 0);
 
 
 endmodule
