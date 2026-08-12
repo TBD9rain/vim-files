@@ -95,7 +95,8 @@ with open(spelldict_path, 'r', encoding='utf-8') as spelldict_r:
     lines = spelldict_r.readlines()
 
 unique_lines = list(set(lines))
-sorted_lines = sorted(unique_lines, key=str.lower)
+# Break ties with the raw line, otherwise words differing only in case get an unstable order.
+sorted_lines = sorted(unique_lines, key=lambda line: (line.lower(), line))
 
 try:
     with open(spelldict_path, 'w', encoding='utf-8') as spelldict_w:
@@ -106,7 +107,7 @@ except:
     sys.exit(0)
 
 # Generate Spell File
-stage_targets = [spelldict_git_path]
+# The binary spell file is not tracked by git, it is only refreshed in the working tree.
 vim_executable = None
 for candidate in ('vim', 'nvim', 'gvim'):
     vim_executable = shutil.which(candidate)
@@ -125,7 +126,6 @@ if vim_executable:
             capture_output=True,
             text=True
         )
-        stage_targets.append(spelldict_git_path + '.spl')
         logging.info('Generated spell file.')
     except subprocess.CalledProcessError as e:
         logging.error('Failed to generate spell file.')
@@ -135,10 +135,10 @@ if vim_executable:
 else:
     logging.warning('No vim executable found, skip spell binary generation.')
 
-# Add Dictionary and Spell File into Staging Area
+# Add Dictionary into Staging Area
 try:
-    subprocess.run(['git', '-C', git_root, 'add', *stage_targets], check=True)
-    logging.info('Added updated files into staging area.')
+    subprocess.run(['git', '-C', git_root, 'add', spelldict_git_path], check=True)
+    logging.info('Added updated spell dictionary into staging area.')
 except:
-    logging.error('Failed to add Vim dictionary or spell file.')
+    logging.error('Failed to add Vim spell dictionary.')
 
