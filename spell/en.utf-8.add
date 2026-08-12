@@ -70,8 +70,8 @@ linter
 lossless
 LSB
 LUT
-LUT4
 lut4
+LUT4
 lut6
 lvds
 marco
@@ -79,8 +79,8 @@ matlab
 mcu
 metadata
 mipi
-modelsim
 ModelSim
+modelsim
 modport
 modports
 MSB
@@ -138,6 +138,7 @@ submodule
 submodules
 subprocess
 sv
+synchronizer
 SystemVerilog
 systemverilog
 tb
