@@ -16,17 +16,14 @@
 snippet fileHeader "automatic filling head info" b
 "===================================================================================================
 "
-"   Title   : ${1:`!p import os; name, ext = os.path.splitext(fn); snip.rv = name`}
-"   Version : 1.0.0
+"   Description${1:
+"       ${2:text}}
 "
-"   Description${2:
-"       ${3:text}}
+"   Additional info${3:
+"       ${4:text}}${5:
 "
-"   Additional info${4:
-"       ${5:text}}${6:
-"
-"   Author  : ${7:`!p import os; snip.rv = os.getenv('USERNAME') or os.getenv('USER');`}${8:
-"   Email   : $9}}
+"   Author  : ${6:`!p import os; snip.rv = os.getenv('USERNAME') or os.getenv('USER');`}${7:
+"   Email   : $8}}
 "
 "===================================================================================================
 
