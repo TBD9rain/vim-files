@@ -1,7 +1,6 @@
 "===================================================================================================
 "
 "   Title   : snippets
-"   Version : 1.0.0
 "
 "   Description
 "       customized syntax for snippet files in UltiSnips
